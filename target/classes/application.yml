@@ -1,0 +1,27 @@
+eureka:
+  instance:
+#    leaseRenewalIntervalInSeconds: 10
+    metadata-map:
+      management.port: ${management.port:9095}
+    health-check-url-path: /health
+    status-page-url-path: /info
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+datasource:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://rm-uf6dnz1ks9fl0806so.mysql.rds.aliyuncs.com:3306/paradise
+  username: xs1h
+  password: xs1h_2017
+  maxWait: 3000 #最大等待时间
+  maxActive: 10 #最大连接数
+  initialSize: 5 #初始化链接数
+  maxIdle: 10 #最大空闲链接数
+  minIdle: 5 #最小空闲链接数
+  defaultAutoCommit: false #是否自动提交
+  validationQuery: "select 1"
+  testWhileIdle: true #是否测试空闲的数据库链接
+  timeBetweenEvictionRunsMillis: 5000 #检查连接是否可用的间隔时间 minEvictableIdleTimeMillis: 60000 #连接最少保存时间 testOnBorrow: false #获取连接时测试
+  testOnReturn: false #返还连接时测试
+

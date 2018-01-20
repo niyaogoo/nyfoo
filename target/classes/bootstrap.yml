@@ -1,0 +1,122 @@
+server:
+  port: 8001
+
+management:
+  port: 9001
+
+spring:
+  application:
+    name: nyfoo
+ # cloud:
+ #   config:
+ #     discovery:
+ #       serviceId: xsconfig
+ #       enabled: true
+ #   stream:
+ #     bindings:
+ #       payment:
+ #         group: xsmanager
+ #     kafka:
+ #       bindings:
+ #         flow:
+ #           consumer:
+ #             resetOffsets: true
+ #             startOffset: latest
+ #             autoCommitOffset: true
+ #             autoCommitOnError: true
+ #       binder:
+ #         autoCreateTopics: true
+ #         autoAddPartitions: true
+ #         brokers: 139.196.240.36
+ #         zkNodes: 139.196.240.36
+
+eureka:
+  instance:
+    metadata-map:
+      management.port: ${management.port}
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+
+#turbine:
+#  aggregator:
+#    clusterConfig: XSMANAGER
+#  appConfig: xsmanager
+
+#springfox.documentation.swagger.v2.path: /swagger
+
+
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
+#  threadpool:
+#    default:
+#      coreSize: 1500
+#  config:
+#    stream:
+#      maxConcurrentConnections: 20
+#
+#cache:
+#  names: user, area, baseProduct, brand, storeProduct, store, frontCategory, parentArea, openCities, voice,storeConfig
+#
+
+---
+spring:
+  profiles: local1
+  
+server:
+  port: 8001
+  
+management:
+  port: 9001
+
+---
+spring:
+  profiles: local2
+  
+server:
+  port: 8002
+  
+management:
+  port: 9002
+
+#---
+#spring:
+#  profiles: test
+#logstash:
+#  servers: 172.16.1.119:5400
+#peer1:
+#  host: http://172.16.1.96:8761/eureka
+#peer2:
+#  host: http://172.16.1.97:8761/eureka
+#
+#---
+#spring:
+#  profiles: prod
+#logstash:
+#  servers: 172.19.94.83:5400
+#peer1:
+#  host: http://172.19.1.232:8761/eureka
+#peer2:
+#  host: http://172.19.1.233:8761/eureka
+#
+#---
+#spring:
+#  profiles: peer1
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${peer1.host}
+#
+#---
+#spring:
+#  profiles: peer2
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultzone: ${peer2.host}
+
